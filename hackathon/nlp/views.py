@@ -5,6 +5,10 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 from nltk.tokenize import word_tokenize
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from nlp.forms import ProfileForm
+from nlp.models import Profile
 
 # Create your views here.
 def find(datastore, tags):
@@ -46,8 +50,8 @@ def secondview(request):
 		selected = find(datastore, tags);
 		text = ""
 		for i in selected:
-			text = text + i + "\n"
-		text = "<h3>" + text + "</h3>" 
+			text =  text + "• " + i + "<br>" + "<br>"
+		text = "QUOTES" + '\n' + "<h3><i>" + text + "</i></h3>"
 	return HttpResponse(text)
 
 def thirdview(request):
@@ -56,10 +60,17 @@ def thirdview(request):
 		selected = getSynonyms(get_text)
 		text = ""
 		for i in selected.keys():
-			text = "\n" + i + ": "
+			text = text + i + ": "
 			for j in selected.get(i):
-				text = text + j + "\n"
+				text = text + j + "; "
+			text = text + "<br>"
 		text = "<h3>" + text + "</h3>" 
 	return HttpResponse(text)
+
+#def fourthview(request):
+#	if request.method == 'GET':
+#		m = request.GET["image"]
+#		text = "<h2>image upload success</h2>" + m
+#	return HttpResponse(text)
 
 
