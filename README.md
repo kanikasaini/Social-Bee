@@ -13,3 +13,9 @@ Requirements:
 1. Python3 + Django 
 2. NLTK library for python3 
 3. TensorFlow + YOLO
+
+Team:
+
+1. Isha Kalra <https://github.com/ishakalra>
+2. Kanika Saini <https://github.com/kanikasaini>
+3. Lavina Jain <https://github.com/lavinajain>
